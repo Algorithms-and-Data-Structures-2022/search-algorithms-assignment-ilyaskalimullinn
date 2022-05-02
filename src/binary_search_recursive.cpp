@@ -19,8 +19,13 @@ namespace assignment {
     //    2) целевой элемент найден
     // 2. Вызовите рекурсивный метод, изменив границы поиска
     //    в зависимости от неравенства между элементом посередине и целевого элемента
+    if (start > stop) return std::nullopt;
+    int mid = start + (stop - start) / 2;
+    if (arr[mid] == search_elem) return mid;
+    if (start == stop) return std::nullopt;
+    if (arr[mid] < search_elem) return search(arr, search_elem, mid + 1, stop);
 
-    return std::nullopt;
+    return search(arr, search_elem, start, mid - 1);
   }
 
 }  // namespace assignment
